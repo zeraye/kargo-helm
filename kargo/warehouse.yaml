@@ -24,3 +24,4 @@ spec:
       repoURL: https://github.com/zeraye/kargo-helm.git
       includePaths:
       - base/feature-flags.yaml
+      - base/some-config.yaml
