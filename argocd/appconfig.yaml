@@ -1,0 +1,13 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: some-confg
+  namespace: argocd
+spec:
+  destination:
+    namespace: kargo-helm-{{path.basename}}
+    name: in-cluster
+  project: some-config
+  source:
+    path: base/some-config.yaml
+    repoURL: https://github.com/zeraye/kargo-helm.git
