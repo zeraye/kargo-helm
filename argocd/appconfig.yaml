@@ -21,5 +21,5 @@ spec:
         name: in-cluster
       project: kargo-helm
       source:
-        path: "base/some-config.yaml"
+        path: base/some-config
         repoURL: https://github.com/zeraye/kargo-helm.git
