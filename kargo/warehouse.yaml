@@ -1,0 +1,26 @@
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Warehouse
+metadata:
+  name: guestbook
+  namespace: kargo-helm
+spec:
+  subscriptions:
+  - image:
+      repoURL: ghcr.io/zeraye/guestbook
+      imageSelectionStrategy: SemVer
+
+---
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Warehouse
+metadata:
+  name: features
+  namespace: kargo-helm
+spec:
+  subscriptions:
+  - git:
+      branch: main
+      commitSelectionStrategy: NewestFromBranch
+      discoveryLimit: 20
+      repoURL: https://github.com/zeraye/kargo-helm.git
+      includePaths:
+      - base/feature-flags.yaml
