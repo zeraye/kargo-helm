@@ -28,7 +28,7 @@ spec:
         - name: argocdApp
           value: kargo-helm-dev
         - name: argocdSecondApp
-          value: config-dev
+          value: some-config-dev
 
 ---
 apiVersion: kargo.akuity.io/v1alpha1
@@ -63,7 +63,7 @@ spec:
         - name: argocdApp
           value: kargo-helm-test
         - name: argocdSecondApp
-          value: config-test
+          value: some-config-test
 
 ---
 apiVersion: kargo.akuity.io/v1alpha1
@@ -98,4 +98,4 @@ spec:
         - name: argocdApp
           value: kargo-helm-prod
         - name: argocdSecondApp
-          value: config-prod
+          value: some-config-prod

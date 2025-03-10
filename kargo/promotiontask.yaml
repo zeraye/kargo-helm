@@ -46,4 +46,7 @@ spec:
     config:
       apps:
       - name: ${{ vars.argocdApp }}
-
+  - uses: argocd-update
+    config:
+      apps:
+      - name: ${{ vars.argocdSecondApp }}

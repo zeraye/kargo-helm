@@ -1,13 +1,25 @@
 apiVersion: argoproj.io/v1alpha1
-kind: Application
+kind: ApplicationSet
 metadata:
-  name: some-confg
+  name: some-config
   namespace: argocd
 spec:
-  destination:
-    namespace: kargo-helm-{{path.basename}}
-    name: in-cluster
-  project: some-config
-  source:
-    path: base/some-config.yaml
-    repoURL: https://github.com/zeraye/kargo-helm.git
+  generators:
+  - git:
+      repoURL: https://github.com/zeraye/kargo-helm.git
+      revision: HEAD
+      directories:
+      - path: env/*
+  template:
+    metadata:
+      name: some-config-{{path.basename}}
+      annotations:
+        kargo.akuity.io/authorized-stage: kargo-helm:{{path.basename}}
+    spec:
+      destination:
+        namespace: kargo-helm-{{path.basename}}
+        name: in-cluster
+      project: kargo-helm
+      source:
+        path: "env/{{path.basename}}/some-config.yaml"
+        repoURL: https://github.com/zeraye/kargo-helm.git
