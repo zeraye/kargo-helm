@@ -6,3 +6,4 @@ metadata:
     app: myapplication
 data:
   my-key: my-value
+  my-new-key: my-new-value
